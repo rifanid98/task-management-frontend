@@ -2,7 +2,7 @@ import axios from 'axios';
 
 export default class BaseHttpService {
   BASE_URL = process.env.REACT_APP_BASE_URL || 'http://localhost:3000';
-  _accessToken = null;
+  _token = null;
 
   constructor(routerStore) {
     this.routerStore = routerStore;
@@ -56,22 +56,22 @@ export default class BaseHttpService {
     };
   }
 
-  get accessToken() {
-    return this._accessToken ? this._accessToken : this.loadToken();
+  get token() {
+    return this._token ? this._token : this.loadToken();
   }
 
-  saveToken(accessToken) {
-    this._accessToken = accessToken;
-    return localStorage.setItem('accessToken', accessToken);
+  saveToken(token) {
+    this._token = token;
+    return localStorage.setItem('token', token);
   }
 
   loadToken() {
-    const token = localStorage.getItem('accessToken');
-    this._accessToken = token;
+    const token = localStorage.getItem('token');
+    this._token = token;
     return token;
   }
 
   removeToken() {
-    localStorage.removeItem('accessToken');
+    localStorage.removeItem('token');
   }
 }

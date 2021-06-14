@@ -2,7 +2,7 @@ import BaseHttpService from './base-http.service';
 import queryString from 'query-string';
 
 export default class TasksService extends BaseHttpService {
-  fetchTasks({ status, search}) {
+  fetchTasks({ status, search }) {
     const queryObj = {};
 
     if (status.length) {
@@ -22,7 +22,7 @@ export default class TasksService extends BaseHttpService {
   }
 
   updateTaskStatus(id, status) {
-    return this.patch(`tasks/${id}/status`, { status });
+    return this.patch(`tasks/${id}`, { status });
   }
 
   createTask(title, description) {
